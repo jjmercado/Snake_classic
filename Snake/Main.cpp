@@ -9,6 +9,7 @@ int main()
 	sf::Texture backgroundTexture;
 	sf::Sprite backgroundSprite;
 	SnakePart snakePart;
+	Grid grid;
 
 	backgroundImage.create(800, 600, sf::Color::Black);
 	backgroundTexture.loadFromImage(backgroundImage);
@@ -25,7 +26,7 @@ int main()
 
 		window.clear();
 		window.draw(backgroundSprite);
-		snakePart.Render(window);
+		grid.Render(window);
 		window.display();
 	}
 
