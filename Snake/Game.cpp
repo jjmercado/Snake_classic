@@ -38,7 +38,16 @@ void Game::Run()
 
 void Game::Events()
 {
-	snake.Events(window);
+	sf::Event event;
+	while (window.pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+
+		snake.Events(window);
+	}
 }
 
 void Game::Render(sf::RenderWindow& window)
