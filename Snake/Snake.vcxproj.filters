@@ -24,12 +24,24 @@
     <ClCompile Include="Grid.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SnakePart.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Grid.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
