@@ -38,6 +38,7 @@ void Game::Run()
 
 void Game::Events()
 {
+	snake.Events(window);
 }
 
 void Game::Render(sf::RenderWindow& window)
@@ -45,9 +46,11 @@ void Game::Render(sf::RenderWindow& window)
 	window.clear();
 	window.draw(backgroundSprite);
 	grid.Render(window);
+	snake.Render(window);
 	window.display();
 }
 
-void Game::Update(sf::Time time)
+void Game::Update(sf::Time deltaTime)
 {
+	snake.Update(deltaTime);
 }

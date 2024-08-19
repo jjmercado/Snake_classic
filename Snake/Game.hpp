@@ -21,6 +21,6 @@ class Game
 		unsigned int frameCount;
 		void Events();
 		void Render(sf::RenderWindow& window);
-		void Update(sf::Time time);
+		void Update(sf::Time deltaTime);
 };
 
