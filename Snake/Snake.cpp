@@ -9,20 +9,19 @@ Snake::Snake()
 
 void Snake::Events(sf::RenderWindow& window)
 {
-    // Hier können Sie die Richtung basierend auf Benutzereingaben ändern
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)) && direction != sf::Vector2f(0, 1))
     {
         direction = sf::Vector2f(0, -1);
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) && direction != sf::Vector2f(0, -1))
     {
         direction = sf::Vector2f(0, 1);
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A)) && direction != sf::Vector2f(1, 0))
     {
         direction = sf::Vector2f(-1, 0);
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) && direction != sf::Vector2f(-1, 0))
     {
         direction = sf::Vector2f(1, 0);
     }
