@@ -38,7 +38,7 @@ void Snake::Render(sf::RenderWindow& window)
 
 void Snake::Update(sf::Time deltaTime, Food& food)
 {
-	if (!IsOutOfBounds())
+	if (!IsOutOfBounds() && !IsCollidingWithSelf())
 	{
         for (auto& bodyPart : snakeParts)
         {
@@ -97,6 +97,18 @@ bool Snake::IsOutOfBounds()
 	if (snakeParts.front().GetPosition().x < 0 || snakeParts.front().GetPosition().x >= 800 || snakeParts.front().GetPosition().y < 0 || snakeParts.front().GetPosition().y >= 600)
 	{
 		return true;
+	}
+    return false;
+}
+
+bool Snake::IsCollidingWithSelf()
+{
+	for (auto it = std::next(snakeParts.begin()); it != snakeParts.end(); ++it)
+	{
+		if (snakeParts.front().GetRect().intersects(it->GetRect()))
+		{
+			return true;
+		}
 	}
     return false;
 }
