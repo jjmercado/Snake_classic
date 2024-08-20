@@ -39,6 +39,8 @@ void Snake::Update(sf::Time deltaTime, Food& food)
 {
 	if (!IsOutOfBounds() && !IsCollidingWithSelf())
 	{
+		HasSpawnedOnSnake(food);
+
         for (auto& bodyPart : snakeParts)
         {
             bodyPart.Update(deltaTime);
@@ -110,6 +112,18 @@ bool Snake::IsCollidingWithSelf()
 		}
 	}
     return false;
+}
+
+void Snake::HasSpawnedOnSnake(Food& food)
+{
+	for (auto& part : snakeParts)
+	{
+		if (part.GetRect().intersects(food.GetRect()))
+		{
+			std::cout << "Food spawned on snake!" << std::endl;
+			food.SetRndPos();
+		}
+	}
 }
 
 void Snake::Reset()

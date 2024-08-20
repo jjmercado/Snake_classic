@@ -22,6 +22,7 @@ class Snake
 		sf::Vector2f direction;
 		bool IsOutOfBounds();
 		bool IsCollidingWithSelf();
+		void HasSpawnedOnSnake(Food& food);
 		void Reset();
 };
 
