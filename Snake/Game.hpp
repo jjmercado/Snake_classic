@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Grid.hpp"
 #include "Snake.hpp"
+#include "Food.hpp"
 #include <iostream>
 
 class Game
@@ -17,6 +18,7 @@ class Game
 		sf::Sprite backgroundSprite;
 		Snake snake;
 		Grid grid;
+		Food food;
 		sf::Clock fpsClock;
 		unsigned int frameCount;
 		void Events();

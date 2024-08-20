@@ -56,10 +56,12 @@ void Game::Render(sf::RenderWindow& window)
 	window.draw(backgroundSprite);
 	grid.Render(window);
 	snake.Render(window);
+	food.Render(window);
 	window.display();
 }
 
 void Game::Update(sf::Time deltaTime)
 {
-	snake.Update(deltaTime);
+	food.Update();
+	snake.Update(deltaTime, food);
 }

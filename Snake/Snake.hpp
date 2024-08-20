@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "SnakePart.hpp"
 #include <deque>
+#include "Food.hpp"
 #include <iostream>
 
 class Snake
@@ -10,7 +11,7 @@ class Snake
 		Snake();
 		void Events(sf::RenderWindow& window);
 		void Render(sf::RenderWindow& window);
-		void Update(sf::Time deltaTime);
+		void Update(sf::Time deltaTime, Food& food);
 
 	private:
 		std::deque<SnakePart> snakeParts;

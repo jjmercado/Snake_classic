@@ -7,11 +7,17 @@ SnakePart::SnakePart()
 	sprite.setTexture(texture);
 	sprite.setPosition(400, 280);
 	speed = 40;
+	collisionRect = sf::IntRect(sprite.getPosition().x, sprite.getPosition().y, 40, 40);
 }
 
 void SnakePart::Render(sf::RenderWindow& window)
 {
 	window.draw(sprite);
+}
+
+void SnakePart::Update(sf::Time deltaTime)
+{
+	collisionRect = sf::IntRect(sprite.getPosition().x, sprite.getPosition().y, 40, 40);
 }
 
 sf::Vector2f SnakePart::GetPosition()
@@ -27,4 +33,9 @@ void SnakePart::SetPosition(sf::Vector2f position)
 float SnakePart::GetSpeed()
 {
 	return speed;
+}
+
+sf::IntRect SnakePart::GetRect()
+{
+	return collisionRect;
 }

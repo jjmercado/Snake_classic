@@ -1,22 +1,23 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class SnakePart
+class Food
 {
 	public:
-		SnakePart();
+		Food();
 		void Render(sf::RenderWindow& window);
-		void Update(sf::Time deltaTime);
+		void Update();
 		sf::Vector2f GetPosition();
 		void SetPosition(sf::Vector2f position);
-		float GetSpeed();
 		sf::IntRect GetRect();
+		void SetRndPos();
 
 	private:
+		sf::Vector2f position;
 		sf::Image image;
 		sf::Texture texture;
 		sf::Sprite sprite;
+		sf::Vector2f rndPos();
 		sf::IntRect collisionRect;
-		float speed;
 };
 
