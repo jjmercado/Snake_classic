@@ -21,5 +21,6 @@ class Snake
 		float moveTimer;
 		sf::Vector2f direction;
 		bool IsOutOfBounds();
+		void Reset();
 };
 

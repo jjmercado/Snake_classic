@@ -45,17 +45,10 @@ void Snake::Update(sf::Time deltaTime, Food& food)
             bodyPart.Update(deltaTime);
         }
 
-	    for (auto it = snakeParts.begin(); it != snakeParts.end(); ++it)
+	    for (auto it = std::next(snakeParts.begin()); it != snakeParts.end(); ++it)
 	    {
-		    if (it == snakeParts.begin())
-		    {
-			    //prevPosition = it->GetPosition();
-		    }
-            else
-            {
-			    prevPosition = std::prev(it)->GetLastPosition();
-			    it->SetPosition(prevPosition);
-            }
+			prevPosition = std::prev(it)->GetLastPosition();
+			it->SetPosition(prevPosition);
 	    }
 
         moveTimer += deltaTime.asSeconds();
@@ -78,6 +71,10 @@ void Snake::Update(sf::Time deltaTime, Food& food)
             snakeParts.front().SetPosition(newPosition);
         }
 	}
+	else
+	{
+		Reset();
+	}
 }
 
 void Snake::AddPart()
@@ -93,14 +90,21 @@ void Snake::AddPart()
 	    pos = std::prev(itr, 2)->GetLastPosition();
     }
 	snakeParts.push_back(SnakePart(pos));
-	std::cout << snakeParts.size() << std::endl;
 }
 
 bool Snake::IsOutOfBounds()
 {
-	if (snakeParts.front().GetPosition().x <= 0 || snakeParts.front().GetPosition().x >= 760 || snakeParts.front().GetPosition().y <= 0 || snakeParts.front().GetPosition().y >= 560)
+	if (snakeParts.front().GetPosition().x < 0 || snakeParts.front().GetPosition().x >= 800 || snakeParts.front().GetPosition().y < 0 || snakeParts.front().GetPosition().y >= 600)
 	{
 		return true;
 	}
     return false;
+}
+
+void Snake::Reset()
+{
+	snakeParts.clear();
+	snakeParts.push_back(SnakePart(sf::Vector2f(400, 280)));
+	moveTimer = 0.0f;
+	direction = sf::Vector2f(-1.0f, 0.0f);
 }
