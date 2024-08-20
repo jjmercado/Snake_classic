@@ -6,7 +6,6 @@ class Food
 	public:
 		Food();
 		void Render(sf::RenderWindow& window);
-		void Update();
 		sf::Vector2f GetPosition();
 		void SetPosition(sf::Vector2f position);
 		sf::IntRect GetRect();

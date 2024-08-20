@@ -14,7 +14,9 @@ class Snake
 		void Update(sf::Time deltaTime, Food& food);
 
 	private:
+		void AddPart();
 		std::deque<SnakePart> snakeParts;
+		sf::Vector2f prevPosition;
 		sf::Vector2f newPosition;
 		float moveTimer;
 		sf::Vector2f direction;

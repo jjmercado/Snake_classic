@@ -2,7 +2,7 @@
 
 Snake::Snake()
 {
-	snakeParts.push_back(SnakePart());
+	snakeParts.push_back(SnakePart(sf::Vector2f(400, 280)));
     moveTimer = 0.0f;
 	direction = sf::Vector2f(-1.0f, 0.0f);
 }
@@ -38,17 +38,34 @@ void Snake::Render(sf::RenderWindow& window)
 
 void Snake::Update(sf::Time deltaTime, Food& food)
 {
-	snakeParts.front().Update(deltaTime);
+    for (auto& bodyPart : snakeParts)
+    {
+        bodyPart.Update(deltaTime);
+    }
+
+	for (auto it = snakeParts.begin(); it != snakeParts.end(); ++it)
+	{
+		if (it == snakeParts.begin())
+		{
+			//prevPosition = it->GetPosition();
+		}
+        else
+        {
+			prevPosition = std::prev(it)->GetLastPosition();
+			it->SetPosition(prevPosition);
+        }
+	}
+
     moveTimer += deltaTime.asSeconds();
 
 	if (snakeParts.front().GetRect().intersects(food.GetRect()))
 	{
-		//snakeParts.push_back(SnakePart());
+		AddPart();
 		food.SetRndPos();
 	}
 
     // Bewege die Schlange nur, wenn der Timer einen Schritt erreicht hat
-    if (moveTimer >= 0.5f)
+    if (moveTimer >= 0.2f)
     {
         moveTimer = 0.0f;
 
@@ -58,4 +75,20 @@ void Snake::Update(sf::Time deltaTime, Food& food)
         // Setze die neue Position
         snakeParts.front().SetPosition(newPosition);
     }
+}
+
+void Snake::AddPart()
+{
+	auto itr = snakeParts.end();
+    sf::Vector2f pos;
+    if (snakeParts.size() <= 1)
+    {
+        pos = std::prev(itr)->GetLastPosition();
+    }
+    else
+    {
+	    pos = std::prev(itr, 2)->GetLastPosition();
+    }
+	snakeParts.push_back(SnakePart(pos));
+	std::cout << snakeParts.size() << std::endl;
 }

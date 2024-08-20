@@ -1,11 +1,11 @@
 #include "SnakePart.hpp"
 
-SnakePart::SnakePart()
+SnakePart::SnakePart(sf::Vector2f prevPos)
 {
 	image.create(40, 40, sf::Color::White);
 	texture.loadFromImage(image);
 	sprite.setTexture(texture);
-	sprite.setPosition(400, 280);
+	sprite.setPosition(prevPos);
 	speed = 40;
 	collisionRect = sf::IntRect(sprite.getPosition().x, sprite.getPosition().y, 40, 40);
 }
@@ -18,6 +18,13 @@ void SnakePart::Render(sf::RenderWindow& window)
 void SnakePart::Update(sf::Time deltaTime)
 {
 	collisionRect = sf::IntRect(sprite.getPosition().x, sprite.getPosition().y, 40, 40);
+
+	positions.push_back(sprite.getPosition());
+
+	if (positions.size() >= 14)
+	{
+		positions.pop_front();
+	}
 }
 
 sf::Vector2f SnakePart::GetPosition()
@@ -38,4 +45,9 @@ float SnakePart::GetSpeed()
 sf::IntRect SnakePart::GetRect()
 {
 	return collisionRect;
+}
+
+sf::Vector2f SnakePart::GetLastPosition()
+{
+	return positions.front();
 }

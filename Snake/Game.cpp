@@ -62,6 +62,5 @@ void Game::Render(sf::RenderWindow& window)
 
 void Game::Update(sf::Time deltaTime)
 {
-	food.Update();
 	snake.Update(deltaTime, food);
 }

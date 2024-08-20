@@ -15,10 +15,6 @@ void Food::Render(sf::RenderWindow& window)
 	window.draw(sprite);
 }
 
-void Food::Update()
-{
-	collisionRect = sf::IntRect(sprite.getPosition().x, sprite.getPosition().y, 40, 40);
-}
 
 sf::Vector2f Food::GetPosition()
 {
@@ -37,6 +33,7 @@ sf::IntRect Food::GetRect()
 void Food::SetRndPos()
 {
 	sprite.setPosition(rndPos());
+	collisionRect = sf::IntRect(sprite.getPosition().x, sprite.getPosition().y, 40, 40);
 }
 
 sf::Vector2f Food::rndPos()
