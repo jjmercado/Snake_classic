@@ -20,5 +20,6 @@ class Snake
 		sf::Vector2f newPosition;
 		float moveTimer;
 		sf::Vector2f direction;
+		bool IsOutOfBounds();
 };
 

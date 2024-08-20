@@ -38,43 +38,46 @@ void Snake::Render(sf::RenderWindow& window)
 
 void Snake::Update(sf::Time deltaTime, Food& food)
 {
-    for (auto& bodyPart : snakeParts)
-    {
-        bodyPart.Update(deltaTime);
-    }
-
-	for (auto it = snakeParts.begin(); it != snakeParts.end(); ++it)
+	if (!IsOutOfBounds())
 	{
-		if (it == snakeParts.begin())
-		{
-			//prevPosition = it->GetPosition();
-		}
-        else
+        for (auto& bodyPart : snakeParts)
         {
-			prevPosition = std::prev(it)->GetLastPosition();
-			it->SetPosition(prevPosition);
+            bodyPart.Update(deltaTime);
+        }
+
+	    for (auto it = snakeParts.begin(); it != snakeParts.end(); ++it)
+	    {
+		    if (it == snakeParts.begin())
+		    {
+			    //prevPosition = it->GetPosition();
+		    }
+            else
+            {
+			    prevPosition = std::prev(it)->GetLastPosition();
+			    it->SetPosition(prevPosition);
+            }
+	    }
+
+        moveTimer += deltaTime.asSeconds();
+
+	    if (snakeParts.front().GetRect().intersects(food.GetRect()))
+	    {
+		    AddPart();
+		    food.SetRndPos();
+	    }
+
+        // Bewege die Schlange nur, wenn der Timer einen Schritt erreicht hat
+        if (moveTimer >= 0.2f)
+        {
+            moveTimer = 0.0f;
+
+            // Berechne die neue Position basierend auf der Richtung
+            sf::Vector2f newPosition = snakeParts.front().GetPosition() + direction * snakeParts.front().GetSpeed();
+
+            // Setze die neue Position
+            snakeParts.front().SetPosition(newPosition);
         }
 	}
-
-    moveTimer += deltaTime.asSeconds();
-
-	if (snakeParts.front().GetRect().intersects(food.GetRect()))
-	{
-		AddPart();
-		food.SetRndPos();
-	}
-
-    // Bewege die Schlange nur, wenn der Timer einen Schritt erreicht hat
-    if (moveTimer >= 0.2f)
-    {
-        moveTimer = 0.0f;
-
-        // Berechne die neue Position basierend auf der Richtung
-        sf::Vector2f newPosition = snakeParts.front().GetPosition() + direction * snakeParts.front().GetSpeed();
-
-        // Setze die neue Position
-        snakeParts.front().SetPosition(newPosition);
-    }
 }
 
 void Snake::AddPart()
@@ -91,4 +94,13 @@ void Snake::AddPart()
     }
 	snakeParts.push_back(SnakePart(pos));
 	std::cout << snakeParts.size() << std::endl;
+}
+
+bool Snake::IsOutOfBounds()
+{
+	if (snakeParts.front().GetPosition().x <= 0 || snakeParts.front().GetPosition().x >= 760 || snakeParts.front().GetPosition().y <= 0 || snakeParts.front().GetPosition().y >= 560)
+	{
+		return true;
+	}
+    return false;
 }
