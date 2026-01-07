@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/Snake.dir/Snake/Main.cpp.o CMakeFiles/Snake.dir/Snake/Game.cpp.o CMakeFiles/Snake.dir/Snake/Snake.cpp.o CMakeFiles/Snake.dir/Snake/SnakePart.cpp.o CMakeFiles/Snake.dir/Snake/Food.cpp.o CMakeFiles/Snake.dir/Snake/Grid.cpp.o -o Snake  -lsfml-graphics 
