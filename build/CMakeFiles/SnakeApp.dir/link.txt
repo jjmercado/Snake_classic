@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/SnakeApp.dir/Snake/Main.cpp.o CMakeFiles/SnakeApp.dir/Snake/Game.cpp.o CMakeFiles/SnakeApp.dir/Snake/Snake.cpp.o CMakeFiles/SnakeApp.dir/Snake/SnakePart.cpp.o CMakeFiles/SnakeApp.dir/Snake/Food.cpp.o CMakeFiles/SnakeApp.dir/Snake/Grid.cpp.o -o SnakeApp  -lsfml-graphics -lsfml-window -lsfml-system 

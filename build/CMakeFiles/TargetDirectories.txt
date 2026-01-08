@@ -1,3 +1,0 @@
-/home/jeremy/Development/C++/Classic_Snake/build/CMakeFiles/SnakeApp.dir
-/home/jeremy/Development/C++/Classic_Snake/build/CMakeFiles/edit_cache.dir
-/home/jeremy/Development/C++/Classic_Snake/build/CMakeFiles/rebuild_cache.dir
