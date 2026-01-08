@@ -6,7 +6,7 @@ project(Classic_Snake)
 
 # Fügt die ausführbare Datei "Snake" hinzu und listet alle Quelldateien auf,
 # die zum Kompilieren benötigt werden.
-add_executable(SnakeApp
+add_executable(SnakeApp.x
     Snake/Main.cpp
     Snake/Game.cpp
     Snake/Snake.cpp
@@ -15,7 +15,7 @@ add_executable(SnakeApp
     Snake/Grid.cpp
 )
 
-target_link_libraries(SnakeApp 
+target_link_libraries(SnakeApp.x 
     PRIVATE 
         sfml-graphics 
         sfml-window 
